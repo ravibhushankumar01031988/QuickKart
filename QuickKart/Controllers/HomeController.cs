@@ -10,6 +10,7 @@ namespace QuickKart.Controllers
 {
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
             return View();
@@ -30,6 +31,11 @@ namespace QuickKart.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
         {
             return View();
         }
