@@ -1,9 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "RegisterUser";
 }
 
-<form asp-action="CheckRole">
+<h2>RegisterUser</h2>
+<form>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -15,25 +16,47 @@
                 <div class="col-md-9">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-9 text-center">
-                                <h2>Log in</h2>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3 text-right">
-                                User Name:
+                                Email Id:
                             </div>
                             <div class="col-md-6">
-                                @Html.TextBox("name")
+                                @Html.TextBox("emailid")
                             </div>
                         </div>
                         <br />
                         <div class="row">
                             <div class="col-md-3 text-right">
-                                Password:
+                                User password:
                             </div>
                             <div class="col-md-6">
-                                @Html.Password("pwd")
+                                @Html.Password("password")
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3 text-right">
+                                Gender:
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBox("gender")
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3 text-right">
+                                Date of birth:
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBox("dob")
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3 text-right">
+                                Address:
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBox("address")
                             </div>
                         </div>
                         <br />
@@ -42,24 +65,16 @@
                                 &nbsp;
                             </div>
                             <div class="col-md-6">
-                                <input type="submit" class="btn" value="Login" id="btnLogin" />                               
-                            </div>                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 text-right">
-                                &nbsp;
-                            </div>
-                            <div class="col-md-6">
-                                <a asp-area="" asp-controller="User" asp-action="RegisterUser">New User Registration</a>
+                                <input type="submit" class="btn" value="Register" id="btnLogin" />
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </form>
+
+
 
 

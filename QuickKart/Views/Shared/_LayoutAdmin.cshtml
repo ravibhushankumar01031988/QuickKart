@@ -30,9 +30,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="GetCoupons">Festive Offers</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a></li>
+                    <li><a asp-area="" asp-controller="Product" asp-action="ViewProducts">View All Products</a></li>
+                    <li><a asp-area="" asp-controller="Product" asp-action="AddProduct">Add Product</a></li>
+                    <li><a asp-area="" asp-controller="Category" asp-action="Index">View All Categories</a></li>
+                    <li><a asp-area="" asp-controller="Category" asp-action="Create">Add Category</a></li>
                 </ul>
             </div>
         </div>
@@ -42,9 +43,11 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2020 - QuickKart</p>
+        <br />
+        <br />
+        <footer style="bottom:0%;position:fixed;width:80%;text-align:center;">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Shop@@Home</p>
         </footer>
     </div>
 
