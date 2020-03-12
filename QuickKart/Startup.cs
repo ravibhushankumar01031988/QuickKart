@@ -12,7 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using QuickKartDataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using QuickKartDataAccessLayer;
-
+using QuickKart.Repository;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace QuickKart
 {
@@ -38,8 +40,13 @@ namespace QuickKart
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
           
             services.AddMvc();
+            services.AddSession();
+            services.AddHttpContextAccessor();
+
             services.AddSingleton<QuickKartRepository>(new QuickKartRepository(new QuickKartContext(new DbContextOptions<QuickKartContext>())));
-        
+            services.AddAutoMapper(x => x.AddProfile(new QuickKartMapper()));
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +65,7 @@ namespace QuickKart
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

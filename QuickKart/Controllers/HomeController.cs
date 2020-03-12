@@ -24,18 +24,25 @@ namespace QuickKart.Controllers
         {
             string userId = frm["name"];
             string password = frm["pwd"];
-
-            byte? roleId = _repObj.ValidateCredentials(userId, password);
-            
-            if(roleId==1)
+            string checkbox = frm["RememberMe"];
+            if (checkbox == "on")
             {
+                CookieOptions option = new CookieOptions();
+                option.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Append("UserId", userId, option);
+                Response.Cookies.Append("Password", password, option);
+            }
+            string username = userId.Split('@')[0];
+            byte? roleId = _repObj.ValidateCredentials(userId, password);
+            if (roleId == 1)
+            {
+                HttpContext.Session.SetString("username", username);
                 return RedirectToAction("AdminHome", "Admin");
             }
-            else if(roleId ==2)
+            else if (roleId == 2)
             {
-                return RedirectToAction("CustomerHOme", "Customer");
+                return Redirect("/Customer/CustomerHome?username=" + username);
             }
-
             return View("Login");
         }
         

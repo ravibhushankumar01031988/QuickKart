@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextaccessor
+
 @{
     ViewData["Title"] = "Login";
 }
@@ -23,8 +24,21 @@
                             <div class="col-md-3 text-right">
                                 User Name:
                             </div>
-                            <div class="col-md-6">
+                            @*<div class="col-md-6">
                                 @Html.TextBox("name")
+                            </div>*@
+                            <div class="col-md-6">
+                                @{
+                                    if (httpContextaccessor.HttpContext.Request.Cookies["UserId"] != null)
+                                    {
+                                        @Html.TextBox("name", httpContextaccessor.HttpContext.Request.Cookies["UserId"]);
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBox("name")
+                                    }
+                                }
+
                             </div>
                         </div>
                         <br />
@@ -33,7 +47,18 @@
                                 Password:
                             </div>
                             <div class="col-md-6">
-                                @Html.Password("pwd")
+                                @*@Html.Password("pwd")*@
+                                @{
+                                    if (httpContextaccessor.HttpContext.Request.Cookies["Password"] != null)
+                                    {
+                                        @Html.Password("pwd", httpContextaccessor.HttpContext.Request.Cookies["Password"]);
+                                    }
+                                    else
+                                    {
+                                        @Html.Password("pwd")
+                                    }
+                                }
+
                             </div>
                         </div>
                         <br />
@@ -42,8 +67,9 @@
                                 &nbsp;
                             </div>
                             <div class="col-md-6">
-                                <input type="submit" class="btn" value="Login" id="btnLogin" />                               
-                            </div>                            
+                                <input type="submit" class="btn" value="Login" id="btnLogin" />
+                                <input type="checkbox" name="RememberMe" /> Remember Me
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3 text-right">

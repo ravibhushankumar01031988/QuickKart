@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextaccessor
+
 @{
     ViewData["Title"] = "CustomerHome";
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
@@ -10,7 +11,12 @@
         @Html.Partial("_recentPurchage")
     </div>
     <div class="col-md-8">
+        <div class="col-md-3">
+            <h4>Welcome @httpContextaccessor.HttpContext.Request.Query["username"]</h4>
+        </div>
     </div>
 </div>
+
+    <br />
 
 

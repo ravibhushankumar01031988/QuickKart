@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace QuickKartDataAccessLayer.Models
 {
-    public partial class Users
+    public class Users
     {
         public Users()
         {
@@ -34,13 +34,13 @@ namespace QuickKartDataAccessLayer.Models
         public string Address { get; set; }
 
 
-
-
-
-
+        [ScaffoldColumn(false)]
         public Roles Role { get; set; }
+        [ScaffoldColumn(false)]
         public ICollection<Cart> Cart { get; set; }
+        [ScaffoldColumn(false)]
         public ICollection<PurchaseDetails> PurchaseDetails { get; set; }
+        [ScaffoldColumn(false)]
         public ICollection<Rating> Rating { get; set; }
     }
 }

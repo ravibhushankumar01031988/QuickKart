@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace QuickKart.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
-        public IActionResult RegisterUser()
+        public IActionResult Index()
         {
             return View();
         }
